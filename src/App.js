@@ -1,6 +1,11 @@
 // import { BrowserRouter } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { useRef, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import BasketModal from './components/BasketModal';
+// import Basket from './pages/Basket'
+
 
 const App = () => {
     const [images, setImages] = useState([]);
@@ -19,6 +24,17 @@ const App = () => {
                 });
         }
     }, []);
+    
+    const [showModal, setShowModal] = useState(false);
+  
+    const handleAddToBasket = () => {
+      // Add logic for adding product to basket
+      setShowModal(true);
+    };
+  
+    const handleCloseModal = () => {
+      setShowModal(false);
+    };
 
     return (
         <div className="image-grid">
@@ -29,6 +45,15 @@ const App = () => {
                         <div className="overlay">
                             <p>{image.breeds[0].name}</p>
                             <p>{image.breeds[0].description}</p>
+                                    <button onClick={handleAddToBasket}>Add to Basket</button>
+                                      {showModal && (
+                                      <BasketModal
+                                       onClose={handleCloseModal}
+                                       onAddToBasket={() => {
+             
+                                       handleCloseModal();
+                                       }}
+                                     />
                         </div>
                     ) : null}
                 </div>
@@ -37,4 +62,13 @@ const App = () => {
     );
 }
 
-export default App;
+
+
+        
+
+        )}
+      </div>
+    );
+  }
+  
+  export default App;
