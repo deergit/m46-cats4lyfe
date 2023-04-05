@@ -18,3 +18,16 @@
     text-decoration: none;
     color: white;
 }
+
+.basketButton {
+    margin: 0 40px;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 50%;
+}
+
+.basketButton:hover {
+    scale: 1.1;
+    transition: ease-in 0.1s;
+    opacity: 100%;
+}

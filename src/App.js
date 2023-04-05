@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import BasketModal from './components/BasketModal';
 import Navbar from './Navbar';
 
+// notes: to use more than 10 images you need the API key
 
 const App = () => {
 
@@ -18,7 +19,7 @@ const App = () => {
         if (cachedImages) {
             setImages(cachedImages.slice(0, 9));               
         } else {
-            fetch('https://api.thecatapi.com/v1/images/search?limit=12')
+            fetch('https://api.thecatapi.com/v1/images/search?limit=12?api_key=live_lpMrF7D80GK4J5PqOfjBJevGbqZk56CYvauSH2nzay440sP7RN7ILmCIL5yViVyy')
                 .then(response => response.json())
                 .then(data => {
                     setImages(data.slice(0, 9));                            // selecting 9 images
