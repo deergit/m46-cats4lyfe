@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import BasketModal from './components/BasketModal';
 import Navbar from './Navbar';
 
@@ -37,7 +37,6 @@ const App = () => {
     return (
         <div className="image-grid">
             <Navbar />
-            
             {images.map((image, index) => (
                 <div className="grid-item" key={index}>
                     <img src={image.url} alt={`Cat ${index}`} />
@@ -53,22 +52,13 @@ const App = () => {
              
                                        handleCloseModal();
                                        }}
-                                     />
-                        </div>
-                    ) : null}
+                                     />)}
+                        </div>)
+                    : null}
                 </div>
             ))}
         </div>
     );
 }
 
-
-
-        
-
-        )}
-      </div>
-    );
-  }
-  
-  export default App;
+export default App;
