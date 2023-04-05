@@ -1,10 +1,8 @@
-// import { BrowserRouter } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
-import { useRef, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import BasketModal from './components/BasketModal';
-// import Basket from './pages/Basket'
+import Navbar from './Navbar';
 
 
 const App = () => {
@@ -38,6 +36,8 @@ const App = () => {
 
     return (
         <div className="image-grid">
+            <Navbar />
+            
             {images.map((image, index) => (
                 <div className="grid-item" key={index}>
                     <img src={image.url} alt={`Cat ${index}`} />
