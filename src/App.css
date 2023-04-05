@@ -28,6 +28,8 @@ body {
     height: auto;
 }
 
+
+/* overlay decriptions not working  */
 .overlay {
     position: absolute;
     bottom: 0;

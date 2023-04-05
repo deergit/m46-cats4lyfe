@@ -6,19 +6,22 @@ import Navbar from './Navbar';
 
 
 const App = () => {
+
+    const APIKey = 'live_lpMrF7D80GK4J5PqOfjBJevGbqZk56CYvauSH2nzay440sP7RN7ILmCIL5yViVyy';
     const [images, setImages] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         const cachedImages = JSON.parse(localStorage.getItem('images'));
 
+        // images stored in cache to stop fetching
         if (cachedImages) {
-            setImages(cachedImages.slice(0, 9));
+            setImages(cachedImages.slice(0, 9));               
         } else {
             fetch('https://api.thecatapi.com/v1/images/search?limit=12')
                 .then(response => response.json())
                 .then(data => {
-                    setImages(data.slice(0, 9));
+                    setImages(data.slice(0, 9));                            // selecting 9 images
                     localStorage.setItem('images', JSON.stringify(data));
                 });
         }
@@ -33,6 +36,8 @@ const App = () => {
         setShowModal(false);
     };
 
+
+    // rendered images
     return (
         <div className="container">
             <Navbar />
