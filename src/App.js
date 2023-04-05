@@ -34,28 +34,29 @@ const App = () => {
     };
 
     return (
-        <div className="image-grid">
+        <div className="container">
             <Navbar />
-            {images.map((image, index) => (
-                <div className="grid-item" key={index}>
-                    <img src={image.url} alt={`Cat ${index}`} />
-                    {image.breeds ? (
-                        <div className="overlay">
-                            <p>{image.breeds[0].name}</p>
-                            <p>{image.breeds[0].description}</p>
-                            <button onClick={handleAddToBasket}>Add to Basket</button>
-                            {showModal && (
-                                <BasketModal
-                                    onClose={handleCloseModal}
-                                    onAddToBasket={() => {
-
-                                        handleCloseModal();
-                                    }}
-                                />)}
-                        </div>)
+            <div className="image-grid">
+                {images.map((image, index) => (
+                    <div className="grid-item" key={index}>
+                        <img src={image.url} alt={`Cat ${index}`} />
+                        {image.breeds ? (
+                            <div className="overlay">
+                                <p>{image.breeds[0].name}</p>
+                                <p>{image.breeds[0].description}</p>
+                                <button onClick={handleAddToBasket}>Add to Basket</button>
+                                {showModal && (
+                                    <BasketModal
+                                        onClose={handleCloseModal}
+                                        onAddToBasket={() => {
+                                            handleCloseModal();
+                                        }}
+                                    />)}
+                            </div>)
                         : null}
-                </div>
-            ))}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
