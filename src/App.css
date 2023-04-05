@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(22,22,26);
+    background-color: rgb(22, 22, 26);
 }
 
 .App {
@@ -11,20 +11,20 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 1rem;
     margin: 1rem;
-  }
-  
-  .grid-item {
+}
+
+.grid-item {
     position: relative;
     overflow: hidden;
-  }
-  
-  .grid-item img {
+}
+
+.grid-item img {
     display: block;
     width: 100%;
     height: auto;
-  }
-  
-  .overlay {
+}
+
+.overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -34,14 +34,13 @@ body {
     text-align: center;
     transition: opacity 0.2s ease-in-out;
     opacity: 0;
-  }
-  
-  .grid-item:hover .overlay {
+}
+
+.grid-item:hover .overlay {
     opacity: 1;
-  }
-  
-  .overlay p {
+}
+
+.overlay p {
     margin: 0;
     padding: 0.25rem 0;
-  }
-  
+}
