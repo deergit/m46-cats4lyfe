@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 
 const App = () => {
     const [images, setImages] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         const cachedImages = JSON.parse(localStorage.getItem('images'));
@@ -22,16 +23,14 @@ const App = () => {
                 });
         }
     }, []);
-    
-    const [showModal, setShowModal] = useState(false);
-  
+
     const handleAddToBasket = () => {
-      // Add logic for adding product to basket
-      setShowModal(true);
+        // Add logic for adding product to basket
+        setShowModal(true);
     };
-  
+
     const handleCloseModal = () => {
-      setShowModal(false);
+        setShowModal(false);
     };
 
     return (
@@ -44,17 +43,17 @@ const App = () => {
                         <div className="overlay">
                             <p>{image.breeds[0].name}</p>
                             <p>{image.breeds[0].description}</p>
-                                    <button onClick={handleAddToBasket}>Add to Basket</button>
-                                      {showModal && (
-                                      <BasketModal
-                                       onClose={handleCloseModal}
-                                       onAddToBasket={() => {
-             
-                                       handleCloseModal();
-                                       }}
-                                     />)}
+                            <button onClick={handleAddToBasket}>Add to Basket</button>
+                            {showModal && (
+                                <BasketModal
+                                    onClose={handleCloseModal}
+                                    onAddToBasket={() => {
+
+                                        handleCloseModal();
+                                    }}
+                                />)}
                         </div>)
-                    : null}
+                        : null}
                 </div>
             ))}
         </div>
