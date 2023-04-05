@@ -14,7 +14,7 @@ const App = () => {
     useEffect(() => {
         const cachedImages = JSON.parse(localStorage.getItem('images'));
 
-        // images stored in cache to stop fetching
+        // images stored in cache to stop fetching in a loop
         if (cachedImages) {
             setImages(cachedImages.slice(0, 9));               
         } else {
