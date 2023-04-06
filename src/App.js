@@ -57,11 +57,11 @@ const App = () => {
                 {catData.map((cat) => {
                     return (
                         <div className="grid-item" key={cat.id}>
-                            <img src={catData.url} alt={`Cat ${cat.id}`} />
-                            {catData.breed ? (
+                            <img src={cat.url} alt={`Cat ${cat.id}`} />
+                            {cat.breed ? (
                                 <div className="overlay">
-                                    <p>{catData.breed}</p>
-                                    <p>{catData.breed}</p>
+                                    <p>{cat.breed}</p>
+                                    <p>{cat.breed}</p>
                                     <button onClick={handleAddToBasket}>Add to Basket</button>
                                     {showModal && (
                                         <BasketModal
