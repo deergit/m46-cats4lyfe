@@ -2,7 +2,7 @@
   "name": "cats4lyfe",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://deergit.github.io/m46-cats4lyfe",
+  "homepage": "https://deergit.github.io/m46-cats4lyfe",
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
     "@testing-library/jest-dom": "^5.16.5",
