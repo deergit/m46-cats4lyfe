@@ -73,13 +73,16 @@ const App = () => {
               {cat.breed ? (
                 <div className="overlay">
                   <p>{cat.breed}</p>
-                  <p>{cat.description}</p>
+                  <p>{cat.description.toUpperCase()}</p>
                   <p>{cat.price}</p>
+
                 </div>
               ) : null}
               <button onClick={() => handleAddToBasket(cat)}>
                 Add to Basket
               </button>
+
+
             </div>
           );
         })}
