@@ -1,15 +1,11 @@
 import { useRef } from 'react';
 
-const BasketModal = (cat, props) => {
+const BasketModal = (props) => {
   const modalRef = useRef();
-     const handleClick = (e) => {
-        if(modalRef.current === e.target){
-            props.closeModal(false)
-        }
-    }
+
 
   const closeHandler = (e) => {
-    cat.onClose();
+    props.onClose();
   }
 
 
@@ -18,9 +14,9 @@ const BasketModal = (cat, props) => {
     <div>
       <h1>Added to Basket</h1>
       
-      <img src={cat.url} alt={`image of ${cat.id} the cat`} draggable="false"></img>
+      {/* <img src={cat.url} alt={`image of ${cat.id} the cat`} draggable="false"></img>
       <h2>ID {cat.id}</h2>
-      <p>{cat.price}</p>
+      <p>{cat.price}</p> */}
 
       
       <button onClick={closeHandler}>Close</button>

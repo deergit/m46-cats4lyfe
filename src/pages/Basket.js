@@ -3,14 +3,10 @@ import BasketModal from '../components/BasketModal';
 
 const Basket = (props) => {
   const modalRef = useRef();
-  const handleClick = (e) => {
-     if(modalRef.current === e.target){
-         props.closeModal(false)
-     }
- }
+  
 
 const closeHandler = (e) => {
- cat.onClose();
+ props.onClose();
 }
   const { cat } = props;
   const [showModal, setShowModal] = useState(false);
@@ -53,7 +49,7 @@ const closeHandler = (e) => {
         {basketItems.length === 0 && <div>basket is empty</div>}
         {basketItems.map((cat) => (
           <div key={`${props.cat.id}`}>
-            <img className="thumbnail" src={`${props.cat.url}`}> alt={`cat`} draggable="false"></img>
+            <img className="thumbnail" src={`${props.cat.url}`} alt={`cat`} draggable="false"></img>
             <p>{`${props.cat.breed}`}</p>
             <button onClick={() => onRemove(cat)} className="remove">
               -
