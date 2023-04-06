@@ -36,3 +36,11 @@ body {
     color: whitesmoke;
     border-radius: 5px;
 }
+
+.basketButton {
+    background-color: rgb(51,51,51);
+    color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
