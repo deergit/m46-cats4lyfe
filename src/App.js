@@ -40,8 +40,8 @@ const App = () => {
     }
   }, []);
 
-  const handleAddToBasket = () => {
-    setBasketItems([...basketItems, catData]);
+  const handleAddToBasket = (cat) => {
+    setBasketItems([...basketItems, cat]);
     setShowModal(true);
   };
 
@@ -67,7 +67,7 @@ const App = () => {
                   <p>{cat.description}</p>
                   <p>{cat.price}</p>
                 </div>) : null}
-              <button onClick={handleAddToBasket}>Add to Basket</button>
+              <button onClick={()=> handleAddToBasket(cat)}>Add to Basket</button>
               {showModal && (
                 <BasketModal
                   onClose={handleCloseModal}
