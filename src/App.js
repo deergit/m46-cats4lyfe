@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 import BasketModal from "./components/BasketModal";
+
 import Navbar from "./Navbar";
 import "./App.css";
 
@@ -49,6 +50,12 @@ const App = () => {
     console.log(basketItems);
   };
 
+  const handleViewBasket = () => {
+    
+    setShowModal(true);
+    console.log('basket');
+  };
+
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -64,6 +71,7 @@ const App = () => {
             handleCloseModal();
           }}
         />
+
       )}
       <div className="image-grid">
         {catData.map((cat) => {

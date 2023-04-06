@@ -21,7 +21,11 @@ const BasketModal = (cat, props) => {
       <img src={cat.url} alt={`image of ${cat.id} the cat`} draggable="false"></img>
       <h2>ID {cat.id}</h2>
       <p>{cat.price}</p>
+
+      
       <button onClick={closeHandler}>Close</button>
+
+      
 
       <h1>Total Basket</h1>
       <p></p>
