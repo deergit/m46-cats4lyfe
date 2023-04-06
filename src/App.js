@@ -49,7 +49,7 @@ const App = () => {
   const handleAddToBasket = (cat) => {
     setBasketItems([...basketItems, cat]);
     setShowAdded(true);
-    // console.log(basketItems);
+    console.log(basketItems);
   };
 
   const handleViewBasket = () => {
