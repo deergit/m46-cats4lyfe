@@ -11,8 +11,7 @@ const App = () => {
     const APIKey = 'live_lpMrF7D80GK4J5PqOfjBJevGbqZk56CYvauSH2nzay440sP7RN7ILmCIL5yViVyy';
     const [catData, setCatData] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    
-    
+    const [basketItems, setBasketItems] = useState([]);
 
     useEffect(() => {
         const cachedData = JSON.parse(localStorage.getItem('catCacheData'));
