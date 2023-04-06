@@ -1,6 +1,6 @@
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav className="navbar">
       <div className="navLogo">
@@ -8,7 +8,7 @@ const Navbar = () => {
         <h1 className="navLogoText">Cats 4 Lyfe</h1>
       </div>
       <div className="navbarLinks">
-        <button className="basketButton">Basket</button>
+        <button className="basketButton" onClick={props.handleShowBasket}>Basket</button>
       </div>
     </nav>
   );

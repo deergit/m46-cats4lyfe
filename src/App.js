@@ -45,7 +45,9 @@ const App = () => {
     setShowModal(true);
   };
 
-
+  const handleShowBasket = () => {
+    setShowModal(true);
+  }
 
   const handleCloseModal = () => {
     setShowModal(false);
@@ -55,7 +57,14 @@ const App = () => {
   // rendered images
   return (
     <div className="container">
-      <Navbar />
+      <Navbar handleShowBasket={handleShowBasket} />
+      {showModal && (
+        <BasketModal
+          onClose={handleCloseModal}
+          onAddToBasket={() => {
+            handleCloseModal();
+          }}
+        />)}
       <div className="image-grid">
         {catData.map((cat) => {
           return (
@@ -66,15 +75,8 @@ const App = () => {
                   <p>{cat.breed}</p>
                   <p>{cat.description.toUpperCase()}</p>
                   <p>{cat.price}</p>
-                  <button className="addBasketButton" onClick={()=> handleAddToBasket(cat)}>Add to Basket</button>
-                  {showModal && (
-                    <BasketModal
-                    onClose={handleCloseModal}
-                    onAddToBasket={() => {
-                    handleCloseModal();
-                  }}
-                />)}
-            </div>) : null}
+                  <button className="addBasketButton" onClick={() => handleAddToBasket(cat)}>Add to Basket</button>
+                </div>) : null}
             </div>
           );
         })}
