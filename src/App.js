@@ -27,7 +27,7 @@ const App = () => {
     }, []);
 
     const handleAddToBasket = () => {
-        setBasketItems([...basketItems, selectedCat]);
+        setBasketItems([...basketItems, catData]);
         setShowModal(true);
     };
 
