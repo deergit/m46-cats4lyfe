@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/m46-cats4lyfe/static/css/main.6215e355.css",
+    "main.js": "/m46-cats4lyfe/static/js/main.5737f6ee.js",
+    "index.html": "/m46-cats4lyfe/index.html",
+    "main.6215e355.css.map": "/m46-cats4lyfe/static/css/main.6215e355.css.map",
+    "main.5737f6ee.js.map": "/m46-cats4lyfe/static/js/main.5737f6ee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6215e355.css",
+    "static/js/main.5737f6ee.js"
+  ]
+}
