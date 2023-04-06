@@ -1,50 +1,50 @@
 body {
-    background-color: rgb(22, 22, 26);
+  background-color: rgb(22, 22, 26);
 }
 
 .container {
-    width: 100%;
-    height: calc(100vh - 90px);
-    position: fixed;
-    top: 90px;
-    overflow: scroll;
+  width: 100%;
+  height: calc(100vh - 90px);
+  position: fixed;
+  top: 90px;
+  overflow: scroll;
 }
 
 .image-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-    margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  margin: 1rem;
 }
 
 .grid-item {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .grid-item img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
 
 /* when description overlay is working, lower the opacicty of the images and highlight the text */
 
 /* overlay decriptions not working  */
 .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 1rem;
-    text-align: center;
-    transition: opacity 0.2s ease-in-out;
-    opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  text-align: center;
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
 }
 
 .overlay p {
-    margin: 0;
-    padding: 0.25rem 0;
+  margin: 0;
+  padding: 0.25rem 0;
 }

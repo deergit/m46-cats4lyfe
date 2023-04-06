@@ -7,7 +7,7 @@ const Basket = (props) => {
   const [basketItems, setBasketItems] = useState([]);
   const itemsPrice = basketItems.reduce((a, c) => a + c.qty * c.price, 0);
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-  const totalPrice = itemsPrice  + shippingPrice;
+  const totalPrice = itemsPrice + shippingPrice;
 
   const onAdd = (catData) => {
     const exist = basketItems.find((x) => x.id === catData.id);
@@ -34,56 +34,56 @@ const Basket = (props) => {
     }
   };
 
- 
+
 
   return (
     <div>
       <h2>Your Basket:</h2>
       <div>
-      {basketItems.length === 0 && <div>basket is empty</div>}
+        {basketItems.length === 0 && <div>basket is empty</div>}
         {basketItems.map((catData) => (
           <div key='{props.catData.id}'>
             <img className="thumbnail" src={image.url} alt={`image of ${image.id} the cat`} draggable="false"></img>
             <p>{props.catData.name}</p>
             <button onClick={() => onRemove(item)} className="remove">
-                -
-              </button>{' '}
-              <button onClick={() => onAdd(item)} className="add">
-                +
-              </button>
-              
+              -
+            </button>{' '}
+            <button onClick={() => onAdd(item)} className="add">
+              +
+            </button>
 
-              <div>
+
+            <div>
               {item.qty} x ${item.price.toFixed(2)}
             </div>
           </div>
         ))}
 
-          {basketItems.length !== 0 && (
+        {basketItems.length !== 0 && (
           <div>
-            
-            
-              <p>Items Price</p>
-              <p>${itemsPrice.toFixed(2)}</p>
 
-              <p>Shipping Price</p>
-              <p> ${shippingPrice.toFixed(2)}</p>
-                 
-              <p>Total Price</p>
-              <p>${totalPrice.toFixed(2)}</p>
 
-           
-            
-              <button onClick={() => alert('Implement Checkout!')}>
-                Checkout
-              </button>
-            </div>
-          
+            <p>Items Price</p>
+            <p>${itemsPrice.toFixed(2)}</p>
+
+            <p>Shipping Price</p>
+            <p> ${shippingPrice.toFixed(2)}</p>
+
+            <p>Total Price</p>
+            <p>${totalPrice.toFixed(2)}</p>
+
+
+
+            <button onClick={() => alert('Implement Checkout!')}>
+              Checkout
+            </button>
+          </div>
+
         )}
 
-     
-      {showModal && <BasketModal basketItems={basketItems} setShowModal={setShowModal} />}
-    </div>
+
+        {showModal && <BasketModal basketItems={basketItems} setShowModal={setShowModal} />}
+      </div>
     </div>
   );
 }
