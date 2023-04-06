@@ -40,8 +40,8 @@ const App = () => {
     }
   }, []);
 
-  const handleAddToBasket = () => {
-    setBasketItems([...basketItems, catData]);
+  const handleAddToBasket = (cat) => {
+    setBasketItems([...basketItems, cat]);
     setShowModal(true);
   };
 
@@ -66,12 +66,11 @@ const App = () => {
                   <p>{cat.breed}</p>
                   <p>{cat.description.toUpperCase()}</p>
                   <p>{cat.price}</p>
-                
-              <button className='basketButton' onClick={handleAddToBasket}>Add to Basket</button>
-              {showModal && (
-                <BasketModal
-                  onClose={handleCloseModal}
-                  onAddToBasket={() => {
+                  <button onClick={()=> handleAddToBasket(cat)}>Add to Basket</button>
+                  {showModal && (
+                    <BasketModal
+                    onClose={handleCloseModal}
+                    onAddToBasket={() => {
                     handleCloseModal();
                   }}
                 />)}
