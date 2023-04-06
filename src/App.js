@@ -11,6 +11,8 @@ const App = () => {
     const APIKey = 'live_lpMrF7D80GK4J5PqOfjBJevGbqZk56CYvauSH2nzay440sP7RN7ILmCIL5yViVyy';
     const [catData, setCatData] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    
+    
 
     useEffect(() => {
         const cachedData = JSON.parse(localStorage.getItem('catCacheData'));
@@ -40,9 +42,11 @@ const App = () => {
         }, []);
 
     const handleAddToBasket = () => {
-        // Add logic for adding product to basket
+        setBasketItems([...basketItems, catData]);
         setShowModal(true);
     };
+
+
 
     const handleCloseModal = () => {
         setShowModal(false);
@@ -76,6 +80,8 @@ const App = () => {
                     );
                 })}
             </div>
+
+            
         </div>
     );
 }
