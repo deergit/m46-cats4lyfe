@@ -40,7 +40,7 @@ const App = () => {
     }
   }, []);
 
-  const handleAddToBasket = () => {
+  const handleAddToBasket = (cat) => {
     setBasketItems([...basketItems, cat]);
     setShowModal(true);
   };
