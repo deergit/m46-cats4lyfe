@@ -53,7 +53,6 @@ const App = () => {
   };
 
   const handleViewBasket = () => {
-    
     setShowBasket(true);
     console.log('basket');
     console.log(basketItems)
@@ -68,17 +67,12 @@ const App = () => {
   return (
     <div className="container">
       <Navbar />
-    {showAdded && (
-      <BasketModal onClose={() => setShowAdded(false)} />
-    )}
-    {showBasket && (
-      <Basket onClose={() => setShowBasket(false)} />
-    )}
-  
-
-        
-
-      
+      {showAdded && (
+        <BasketModal onClose={() => setShowAdded(false)} basketItems={basketItems} />
+      )}
+      {showBasket && (
+        <Basket onClose={() => setShowBasket(false)} basketItems={basketItems} />
+      )}
       <div className="image-grid">
         {catData.map((cat) => {
           return (
@@ -89,7 +83,6 @@ const App = () => {
                   <p>{cat.breed}</p>
                   <p>{cat.description.toUpperCase()}</p>
                   <p>{cat.price}</p>
-
                 </div>
               ) : null}
               <button onClick={() => handleAddToBasket(cat)}>
@@ -98,8 +91,6 @@ const App = () => {
               <button onClick={() => handleViewBasket()}>
                 View Basket
               </button>
-
-
             </div>
           );
         })}
