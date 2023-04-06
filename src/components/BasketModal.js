@@ -7,7 +7,7 @@ const BasketModal = (image) => {
     image.onClose();
   }
 
-  
+
 
   return (
     <div>
