@@ -52,29 +52,33 @@ const App = () => {
   };
 
 
-  // rendered images
-  return (
-    <div className="container">
-      <Navbar />
-      <div className="image-grid">
-        {catData.map((cat) => {
-          return (
-            <div className="grid-item" key={cat.id}>
-              <img src={cat.url} alt={`Cat ${cat.id}`} />
-              {cat.breed ? (
-                <div className="overlay">
-                  <p>{cat.breed}</p>
-                  <p>{cat.breed}</p>
-                  <button onClick={handleAddToBasket}>Add to Basket</button>
-                  {showModal && (
-                    <BasketModal
-                      onClose={handleCloseModal}
-                      onAddToBasket={() => {
-                        handleCloseModal();
-                      }}
-                    />)}
-                </div>)
-                : null}
+// rendered images
+    return (
+        <div className="container">
+            <Navbar />
+            <div className="image-grid">
+                {catData.map((cat) => {
+                    return (
+                        <div className="grid-item" key={cat.id}>
+                            <img src={cat.url} alt={`Cat ${cat.id}`} />
+                            {cat.breed ? (
+                                <div className="overlay">
+                                    <p>{cat.breed}</p>
+                                    <p>{cat.description}</p>
+                                    <p>{cat.price}</p>
+                                </div>) : null}
+                                    <button onClick={handleAddToBasket}>Add to Basket</button>
+                                    {showModal && (
+                                        <BasketModal
+                                            onClose={handleCloseModal}
+                                            onAddToBasket={() => {
+                                                handleCloseModal();
+                                            }}
+                                        />)}
+                              
+                        </div>
+                    );
+                })}
             </div>
           );
         })}
