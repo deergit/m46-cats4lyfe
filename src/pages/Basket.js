@@ -8,33 +8,33 @@ const Basket = (props) => {
 const closeHandler = (e) => {
  props.onClose();
 }
-  const { cat } = props;
-  const [showModal, setShowModal] = useState(false);
+  
+  const [showBasket, setShowBasket] = useState(false);
   const [basketItems, setBasketItems] = useState([]);
   const itemsPrice = basketItems.reduce((a, c) => a + c.qty * c.price, 0);
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + shippingPrice;
 
-  const onAdd = (cat) => {
-    const exist = basketItems.find((x) => x.id === cat.id);
+  const onAdd = (item) => {
+    const exist = basketItems.find((x) => x.id === item.id);
     if (exist) {
       setBasketItems(
         basketItems.map((x) =>
-          x.id === cat.id ? { ...exist, qty: exist.qty + 1 } : x
+          x.id === item.id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
-      setBasketItems([...basketItems, { ...cat, qty: 1 }]);
+      setBasketItems([...basketItems, { ...item, qty: 1 }]);
     }
   };
-  const onRemove = (cat) => {
-    const exist = basketItems.find((x) => x.id === cat.id);
+  const onRemove = (item) => {
+    const exist = basketItems.find((x) => x.id === item.id);
     if (exist.qty === 1) {
-      setBasketItems(basketItems.filter((x) => x.id !== cat.id));
+      setBasketItems(basketItems.filter((x) => x.id !== item.id));
     } else {
       setBasketItems(
         basketItems.map((x) =>
-          x.id === cat.id ? { ...exist, qty: exist.qty - 1 } : x
+          x.id === item.id ? { ...exist, qty: exist.qty - 1 } : x
         )
       );
     }
@@ -46,24 +46,27 @@ const closeHandler = (e) => {
     <div>
       <h2>Your Basket:</h2>
       <div>
-        {basketItems.length === 0 && <div>basket is empty</div>}
-        {basketItems.map((cat) => (
-          <div key={`${props.cat.id}`}>
-            <img className="thumbnail" src={`${props.cat.url}`} alt={`cat`} draggable="false"></img>
-            <p>{`${props.cat.breed}`}</p>
-            <button onClick={() => onRemove(cat)} className="remove">
+        {props.basketItems.length === 0 && <div>basket is empty</div>}
+        {props.basketItems.map((item) => (
+          <div key={`${item.id}`}>
+            <img className="thumbnail" src={`${item.url}`} alt={`cat`} draggable="false"></img>
+            <p>{`${item.breed}`}</p>
+            <button onClick={() => onRemove(item)} className="remove">
               -
             </button>{' '}
-            <button onClick={() => onAdd(cat)} className="add">
+            <button onClick={() => onAdd(item)} className="add">
               +
             </button>
 
 
             <div>
-              {cat.qty} x ${cat}.price.toFixed(2)}
+              {item.qty} x ${item.price.toFixed(2)}
             </div>
           </div>
-        ))}
+  
+          )
+      })}
+
 
         {basketItems.length !== 0 && (
           <div>
@@ -88,7 +91,7 @@ const closeHandler = (e) => {
         )}
 
 
-        {showModal && <BasketModal basketItems={basketItems} setShowModal={setShowModal} />}
+        {showBasket && <BasketModal basketItems={basketItems} setShowBasket={setShowBasket} />}
       </div>
     </div>
   );
