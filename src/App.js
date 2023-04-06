@@ -34,7 +34,6 @@ const App = () => {
                 })
                 setCatData(catConstructor);
                 localStorage.setItem('catCacheData', JSON.stringify(catConstructor));
-                console.log(catConstructor);
                 };
             fetchCatdata();
             }
