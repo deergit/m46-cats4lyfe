@@ -8,7 +8,8 @@ import Navbar from './Navbar';
 const App = () => {
     const [images, setImages] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [currentimage, setCurrentimage] = useState({});
+    
+    
 
     useEffect(() => {
         const cachedImages = JSON.parse(localStorage.getItem('images'));
@@ -26,16 +27,11 @@ const App = () => {
     }, []);
 
     const handleAddToBasket = () => {
-        // Add logic for adding product to basket
+        setBasketItems([...basketItems, selectedCat]);
         setShowModal(true);
     };
 
-    const handleClick = (image) => {
-        setCurrentimage(image);
-        console.log(image);
-        console.log(image.id)
-        setShowModal(true)
-      }
+
 
     const handleCloseModal = () => {
         setShowModal(false);
@@ -47,7 +43,7 @@ const App = () => {
             <div className="image-grid">
                 {images.map((image, index) => (
                     <div className="grid-item" key={index}>
-                        <img src={image.url} alt={`Cat ${index}`} onClick={() => handleClick(image)} />
+                        <img src={image.url} alt={`Cat ${index}`} />
                         {image.breeds ? (
                             <div className="overlay">
                                 <p>{image.breeds[0].name}</p>

@@ -7,6 +7,8 @@ const BasketModal = (image) => {
     image.onClose();
   }
 
+  
+
   return (
     <div>
       <h1>Added to Basket</h1>
@@ -15,6 +17,10 @@ const BasketModal = (image) => {
       <h2>ID {image.id}</h2>
       <p>{'props.selectedCat.price'}</p>
       <button onClick={closeHandler}>Close</button>
+
+      <h1>Total Basket</h1>
+      <p></p>
+      <p></p>
     </div>
   );
 }
