@@ -5,6 +5,7 @@ import BasketModal from './components/BasketModal';
 import Navbar from './Navbar';
 import HomePage from './HomePage';
 import CatAbout from './CatAbout';
+import { faker } from '@faker-js/faker';
 
 // notes: to use more than 10 images you need the API key
 
@@ -19,14 +20,26 @@ const App = () => {
         if (cachedImages) {
             setImages(cachedImages.slice(0, 9));
         } else {
-            fetch('https://api.thecatapi.com/v1/images/search?limit=12')
-                .then(response => response.json())
-                .then(data => {
-                    setImages(data.slice(0, 9));
-                    localStorage.setItem('images', JSON.stringify(data));
-                });
-        }
-    }, []);
+
+            const fetchCatdata = async () => {
+                const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=12`);
+                const data = await response.json();
+                const catConstructor = data.map((cat, index) => {
+                    return {
+                        id: index,
+                        url: cat.url,
+                        name: faker.name.fullName(),
+                        breed: faker.animal.cat(),
+                        description: faker.word.adjective(),
+                        price: faker.commerce.price(50, 2500, 2, "£")
+                    }
+                })
+                setCatData(catConstructor);
+                localStorage.setItem('catCacheData', JSON.stringify(catConstructor));
+                };
+            fetchCatdata();
+            }
+        }, []);
 
     const handleAddToBasket = () => {
         // Add logic for adding product to basket
