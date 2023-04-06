@@ -26,8 +26,10 @@ body {
     display: block;
     width: 100%;
     height: auto;
+    border-radius: 5px;
 }
 
+/* when description overlay is working, lower the opacicty of the images and highlight the text */
 
 /* overlay decriptions not working  */
 .overlay {
@@ -40,10 +42,6 @@ body {
     text-align: center;
     transition: opacity 0.2s ease-in-out;
     opacity: 0;
-}
-
-.grid-item:hover .overlay {
-    opacity: 1;
 }
 
 .overlay p {
