@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import BasketModal from '../components/BasketModal';
 
 const Basket = (props) => {
+  const modalRef = useRef();
+  const handleClick = (e) => {
+     if(modalRef.current === e.target){
+         props.closeModal(false)
+     }
+ }
+
+const closeHandler = (e) => {
+ cat.onClose();
+}
   const { cat } = props;
   const [showModal, setShowModal] = useState(false);
   const [basketItems, setBasketItems] = useState([]);
@@ -42,19 +52,19 @@ const Basket = (props) => {
       <div>
         {basketItems.length === 0 && <div>basket is empty</div>}
         {basketItems.map((cat) => (
-          <div key='{props.cat.id}'>
-            <img className="thumbnail" src={image.url} alt={`image of ${image.id} the cat`} draggable="false"></img>
-            <p>{props.cat.name}</p>
-            <button onClick={() => onRemove(item)} className="remove">
+          <div key={`${props.cat.id}`}>
+            <img className="thumbnail" src={`${props.cat.url}`}> alt={`cat`} draggable="false"></img>
+            <p>{`${props.cat.breed}`}</p>
+            <button onClick={() => onRemove(cat)} className="remove">
               -
             </button>{' '}
-            <button onClick={() => onAdd(item)} className="add">
+            <button onClick={() => onAdd(cat)} className="add">
               +
             </button>
 
 
             <div>
-              {item.qty} x ${item.price.toFixed(2)}
+              {cat.qty} x ${cat}.price.toFixed(2)}
             </div>
           </div>
         ))}

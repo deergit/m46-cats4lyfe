@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { faker } from "@faker-js/faker";
 import BasketModal from "./components/BasketModal";
+import Basket from "./pages/Basket";
 
 import Navbar from "./Navbar";
 import "./App.css";
@@ -12,7 +13,8 @@ const App = () => {
   const APIKey =
     "live_lpMrF7D80GK4J5PqOfjBJevGbqZk56CYvauSH2nzay440sP7RN7ILmCIL5yViVyy";
   const [catData, setCatData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showAdded, setShowAdded] = useState(false);
+  const [showBasket, setShowBasket] = useState(false);
   const [basketItems, setBasketItems] = useState([]);
 
   useEffect(() => {
@@ -46,33 +48,37 @@ const App = () => {
 
   const handleAddToBasket = (cat) => {
     setBasketItems([...basketItems, cat]);
-    setShowModal(true);
-    console.log(basketItems);
+    setShowAdded(true);
+    // console.log(basketItems);
   };
 
   const handleViewBasket = () => {
     
-    setShowModal(true);
+    setShowBasket(true);
     console.log('basket');
+    console.log(basketItems)
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    setShowAdded(false);
+    setShowBasket(false);
   };
 
   // rendered images
   return (
     <div className="container">
       <Navbar />
-      {showModal && (
-        <BasketModal
-          onClose={handleCloseModal}
-          onAddToBasket={() => {
-            handleCloseModal();
-          }}
-        />
+    {showAdded && (
+      <BasketModal onClose={() => setShowAdded(false)} />
+    )}
+    {showBasket && (
+      <Basket onClose={() => setShowBasket(false)} />
+    )}
+  
 
-      )}
+        
+
+      
       <div className="image-grid">
         {catData.map((cat) => {
           return (
@@ -88,6 +94,9 @@ const App = () => {
               ) : null}
               <button onClick={() => handleAddToBasket(cat)}>
                 Add to Basket
+              </button>
+              <button onClick={() => handleViewBasket()}>
+                View Basket
               </button>
 
 
