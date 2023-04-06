@@ -64,9 +64,9 @@ const App = () => {
               {cat.breed ? (
                 <div className="overlay">
                   <p>{cat.breed}</p>
-                  <p>{cat.description}</p>
+                  <p>{cat.description.toUpperCase()}</p>
                   <p>{cat.price}</p>
-                </div>) : null}
+                
               <button onClick={handleAddToBasket}>Add to Basket</button>
               {showModal && (
                 <BasketModal
@@ -75,7 +75,7 @@ const App = () => {
                     handleCloseModal();
                   }}
                 />)}
-
+            </div>) : null}
             </div>
           );
         })}
