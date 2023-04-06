@@ -44,19 +44,41 @@ const App = () => {
     setShowModal(true);
   };
 
+  const handleShowBasket = () => {
+    setShowModal(true);
+  }
+
   const handleCloseModal = () => {
     setShowModal(false);
   };
 
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage catData={catData} handleAddToBasket={handleAddToBasket} />} />
-        <Route path="/about/:id" element={<CatAbout catData={catData} />} />
-      </Routes>
-      {/* <BasketModal showModal={showModal} handleCloseModal={handleCloseModal} basketItems={basketItems} /> */}
-    </BrowserRouter>
+    <div className="container">
+      <Navbar handleShowBasket={handleShowBasket} />
+      {showModal && (
+        <BasketModal
+          onClose={handleCloseModal}
+          onAddToBasket={() => {
+            handleCloseModal();
+          }}
+        />)}
+      <div className="image-grid">
+        {catData.map((cat) => {
+          return (
+            <div className="grid-item" key={cat.id}>
+              <img src={cat.url} alt={`Cat ${cat.id}`} />
+              {cat.breed ? (
+                <div className="overlay">
+                  <p>{cat.breed}</p>
+                  <p>{cat.description.toUpperCase()}</p>
+                  <p>{cat.price}</p>
+                  <button className="addBasketButton" onClick={() => handleAddToBasket(cat)}>Add to Basket</button>
+                </div>) : null}
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

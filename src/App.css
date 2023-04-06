@@ -32,3 +32,11 @@ body {
 .overlay {
     color: whitesmoke;
 }
+
+.addBasketButton {
+    background-color: rgb(51,51,51);
+    color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0px;
+}
