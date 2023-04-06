@@ -66,7 +66,7 @@ const App = () => {
                   <p>{cat.breed}</p>
                   <p>{cat.description.toUpperCase()}</p>
                   <p>{cat.price}</p>
-                  <button onClick={()=> handleAddToBasket(cat)}>Add to Basket</button>
+                  <button className="addBasketButton" onClick={()=> handleAddToBasket(cat)}>Add to Basket</button>
                   {showModal && (
                     <BasketModal
                     onClose={handleCloseModal}
