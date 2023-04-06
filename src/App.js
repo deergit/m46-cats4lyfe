@@ -20,7 +20,7 @@ const App = () => {
             setCatData(cachedData);
         } else {
             const fetchCatdata = async () => {
-                const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=12`);
+                const response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=12&api_key=${APIKey}`);
                 const data = await response.json();
                 const catConstructor = data.map((cat, index) => {
                     return {
