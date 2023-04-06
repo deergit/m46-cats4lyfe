@@ -2,33 +2,33 @@ import React, { useState } from 'react';
 import BasketModal from '../components/BasketModal';
 
 const Basket = (props) => {
-  const { cat } = props;
+  const { catData } = props;
   const [showModal, setShowModal] = useState(false);
   const [basketItems, setBasketItems] = useState([]);
   const itemsPrice = basketItems.reduce((a, c) => a + c.qty * c.price, 0);
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + shippingPrice;
 
-  const onAdd = (cat) => {
-    const exist = basketItems.find((x) => x.id === cat.id);
+  const onAdd = (catData) => {
+    const exist = basketItems.find((x) => x.id === catData.id);
     if (exist) {
       setBasketItems(
         basketItems.map((x) =>
-          x.id === cat.id ? { ...exist, qty: exist.qty + 1 } : x
+          x.id === catData.id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
-      setBasketItems([...basketItems, { ...cat, qty: 1 }]);
+      setBasketItems([...basketItems, { ...catData, qty: 1 }]);
     }
   };
-  const onRemove = (cat) => {
-    const exist = basketItems.find((x) => x.id === cat.id);
+  const onRemove = (catData) => {
+    const exist = basketItems.find((x) => x.id === catData.id);
     if (exist.qty === 1) {
-      setBasketItems(basketItems.filter((x) => x.id !== cat.id));
+      setBasketItems(basketItems.filter((x) => x.id !== catData.id));
     } else {
       setBasketItems(
         basketItems.map((x) =>
-          x.id === cat.id ? { ...exist, qty: exist.qty - 1 } : x
+          x.id === catData.id ? { ...exist, qty: exist.qty - 1 } : x
         )
       );
     }
@@ -41,10 +41,10 @@ const Basket = (props) => {
       <h2>Your Basket:</h2>
       <div>
         {basketItems.length === 0 && <div>basket is empty</div>}
-        {basketItems.map((cat) => (
-          <div key='{props.cat.id}'>
+        {basketItems.map((catData) => (
+          <div key='{props.catData.id}'>
             <img className="thumbnail" src={image.url} alt={`image of ${image.id} the cat`} draggable="false"></img>
-            <p>{props.cat.name}</p>
+            <p>{props.catData.name}</p>
             <button onClick={() => onRemove(item)} className="remove">
               -
             </button>{' '}

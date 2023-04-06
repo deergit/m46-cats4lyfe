@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { faker } from '@faker-js/faker';
 import BasketModal from './components/BasketModal';
 import Navbar from './Navbar';
 import './App.css';
-
-// notes: to use more than 10 images you need the API key
+import CatAbout from './pages/CatAbout';
+import HomePage from './pages/HomePage';
 
 const App = () => {
   const APIKey = 'live_lpMrF7D80GK4J5PqOfjBJevGbqZk56CYvauSH2nzay440sP7RN7ILmCIL5yViVyy';
@@ -16,7 +16,6 @@ const App = () => {
   useEffect(() => {
     const cachedData = JSON.parse(localStorage.getItem('catCacheData'));
 
-    // images stored in cache to stop fetching in a loop
     if (cachedData && cachedData.length > 0) {
       setCatData(cachedData);
     } else {
@@ -45,41 +44,19 @@ const App = () => {
     setShowModal(true);
   };
 
-
-
   const handleCloseModal = () => {
     setShowModal(false);
   };
 
-
-  // rendered images
   return (
-    <div className="container">
+    <BrowserRouter>
       <Navbar />
-      <div className="image-grid">
-        {catData.map((cat) => {
-          return (
-            <div className="grid-item" key={cat.id}>
-              <img src={cat.url} alt={`Cat ${cat.id}`} />
-              {cat.breed ? (
-                <div className="overlay">
-                  <p>{cat.breed}</p>
-                  <p>{cat.description.toUpperCase()}</p>
-                  <p>{cat.price}</p>
-                  <button onClick={()=> handleAddToBasket(cat)}>Add to Basket</button>
-                  {showModal && (
-                    <BasketModal
-                    onClose={handleCloseModal}
-                    onAddToBasket={() => {
-                    handleCloseModal();
-                  }}
-                />)}
-            </div>) : null}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<HomePage catData={catData} handleAddToBasket={handleAddToBasket} />} />
+        <Route path="/about/:id" element={<CatAbout catData={catData} />} />
+      </Routes>
+      {/* <BasketModal showModal={showModal} handleCloseModal={handleCloseModal} basketItems={basketItems} /> */}
+    </BrowserRouter>
   );
 }
 

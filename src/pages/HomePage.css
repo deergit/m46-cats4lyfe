@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(22, 22, 26);
+  }
+  
+  .container {
+    width: 100%;
+    height: calc(100vh - 90px);
+    position: fixed;
+    top: 90px;
+    overflow: scroll;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    margin: 1rem;
+  }
+  
+  .grid-item {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .grid-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .overlay {
+      color: whitesmoke;
+  }
+  
