@@ -44,3 +44,9 @@ body {
     padding: 10px;
     margin: 0px;
 }
+
+.addBasketButton:hover {
+  filter: brightness(1.2);
+  scale: 1.1;
+  
+}
