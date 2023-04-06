@@ -29,8 +29,7 @@ const App = () => {
                         name: faker.name.fullName(),
                         breed: faker.animal.cat(),
                         description: faker.word.adjective(),
-                        price: faker.commerce.price(50, 2500, 2, "£"),
-                        test: "testing"
+                        price: faker.commerce.price(50, 2500, 2, "£")
                     }
                 })
                 setCatData(catConstructor);
