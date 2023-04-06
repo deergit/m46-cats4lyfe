@@ -16,11 +16,22 @@
   padding: 20px 40px;
 }
 
-.navbarLogo {
+.navLogo {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.navLogoImg {
+  width: 70px;
+  height: 75px;
+}
+
+.navLogoText {
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
   color: white;
+  margin-left: -70px;
 }
 
 .basketButton {
