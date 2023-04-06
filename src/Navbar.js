@@ -8,7 +8,7 @@ const Navbar = (props) => {
         <h1 className="navLogoText">Cats 4 Lyfe</h1>
       </div>
       <div className="navbarLinks">
-        <button className="basketButton" onClick={props.handleShowBasket}>Basket</button>
+        <button className="basketButton" onClick={!props.showModal ? props.handleShowBasket : props.handleCloseModal}>Basket</button>
       </div>
     </nav>
   );
