@@ -47,7 +47,7 @@ const closeHandler = (e) => {
       <h2>Your Basket:</h2>
       <div>
         {props.basketItems.length === 0 && <div>basket is empty</div>}
-        {props.basketItems.map((item) => (
+        {props.basketItems.map((item) => {
           <div key={`${item.id}`}>
             <img className="thumbnail" src={`${item.url}`} alt={`cat`} draggable="false"></img>
             <p>{`${item.breed}`}</p>
@@ -57,15 +57,11 @@ const closeHandler = (e) => {
             <button onClick={() => onAdd(item)} className="add">
               +
             </button>
-
-
             <div>
               {item.qty} x ${item.price.toFixed(2)}
             </div>
           </div>
-  
-          )
-      })}
+        })}
 
 
         {basketItems.length !== 0 && (
