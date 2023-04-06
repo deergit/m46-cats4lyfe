@@ -57,7 +57,7 @@ const App = () => {
   // rendered images
   return (
     <div className="container">
-      <Navbar handleShowBasket={handleShowBasket} />
+      <Navbar handleShowBasket={handleShowBasket} handleCloseModal={handleCloseModal} showModal={showModal} />
       {showModal && (
         <BasketModal
           onClose={handleCloseModal}
