@@ -49,8 +49,7 @@ const App = () => {
   const handleAddToBasket = (cat) => {
     setBasketItems([...basketItems, cat]);
     setShowAdded(true);
-    console.log('added');
-    console.log(basketItems);
+
   };
 
   const handleRemoveFromBasket = (itemId) => {
@@ -59,9 +58,7 @@ const App = () => {
 
   const handleViewBasket = () => {
     setShowBasket(true);
-    console.log('basket');
-    console.log(basketItems)
-  };
+   };
 
   const handleCloseModal = () => {
     setShowAdded(false);
