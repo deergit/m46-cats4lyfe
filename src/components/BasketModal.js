@@ -14,7 +14,7 @@ const BasketModal = (props) => {
       
       {props.basketItems.map((item) => {
         return (
-          <div>
+          <div key={`${item.id}`}>
             <img src={item.url} alt={`${item.id} the cat`} draggable="false"></img>
             <h2>ID {item.id}</h2>
             <p>{item.price}</p>

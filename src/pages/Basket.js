@@ -9,15 +9,16 @@ const closeHandler = (e) => {
  props.onClose();
 }
   
-  const [showBasket, setShowBasket] = useState(false);
-  const [basketItems, setBasketItems] = useState([]);
-  const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-  const totalPrice = itemsPrice + shippingPrice;
-
-  const itemsPrice = basketItems.reduce((total, item) => {
+const [showBasket, setShowBasket] = useState(false);
+const [basketItems, setBasketItems] = useState([]);
+const itemsPrice = basketItems.reduce((total, item) => {
   const price = Number(item.price.replace(/[^0-9.-]+/g,""));
   return total + price;
-  }, 0);
+}, 0);
+const shippingPrice = itemsPrice > 2000 ? 0 : 20;
+const totalPrice = itemsPrice + shippingPrice;
+
+
 
   const onAdd = (item) => {
     const exist = basketItems.find((x) => x.id === item.id);
@@ -31,6 +32,11 @@ const closeHandler = (e) => {
       setBasketItems([...basketItems, { ...item, qty: 1 }]);
     }
   };
+
+
+
+
+
   const onRemove = (item) => {
     const exist = basketItems.find((x) => x.id === item.id);
     if (exist.qty === 1) {
