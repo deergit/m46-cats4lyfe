@@ -22,6 +22,12 @@ const Basket = ({ onClose, basketItems, setBasketItems }) => {
     );
   };
 
+  const handleClearAll = () => {
+    setBasketItems([]);
+    setTotalPrice(0);
+  };
+
+
   return (
     <div className="basket" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -30,7 +36,7 @@ const Basket = ({ onClose, basketItems, setBasketItems }) => {
         {basketItems.map((item) => (
   <li key={item.id}>
     <img className="thumbnail" src={`${item.url}`} alt={`cat`} draggable="false"></img> - {item.name} - {item.price} 
-    <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
+    <button className="basketButtons" onClick={() => handleRemoveItem(item.id)}>Remove</button>
   </li>
 ))}
         </ul>
@@ -38,9 +44,13 @@ const Basket = ({ onClose, basketItems, setBasketItems }) => {
         <button className="basketButtons" onClick={() => alert('Forwarding to Checkout!')}>
           Checkout
         </button>
+        <button className="basketButtons" onClick={handleClearAll}>
+          Clear All
+        </button>
         <button className="basketButtons" onClick={onClose}>
           Close
         </button>
+
       </div>
     </div>
   );
