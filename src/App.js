@@ -49,6 +49,7 @@ const App = () => {
   const handleAddToBasket = (cat) => {
     setBasketItems([...basketItems, cat]);
     setShowAdded(true);
+    console.log('added');
     console.log(basketItems);
   };
 
