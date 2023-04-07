@@ -1,11 +1,14 @@
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <nav className="navbar">
-      <h1 className="navbarLogo">My Store</h1>
+      <div className="navLogo">
+        <img className="navLogoImg" src="./images/cat.png" alt="cats 4 lyfe logo"></img>
+        <h1 className="navLogoText">Cats 4 Lyfe</h1>
+      </div>
       <div className="navbarLinks">
-        <button className="basketButton">Basket</button>
+        <button className="basketButton" onClick={!props.showModal ? props.handleShowBasket : props.handleCloseModal}>Basket</button>
       </div>
     </nav>
   );

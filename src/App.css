@@ -37,10 +37,16 @@ body {
     border-radius: 5px;
 }
 
-.basketButton {
+.addBasketButton {
     background-color: rgb(51,51,51);
     color: whitesmoke;
     border-radius: 5px;
     padding: 10px;
     margin: 0px;
+}
+
+.addBasketButton:hover {
+  filter: brightness(1.2);
+  scale: 1.1;
+  
 }
