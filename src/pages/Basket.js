@@ -1,91 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import BasketModal from '../components/BasketModal';
+import './Basket.css';
 
-const Basket = (props) => {
-  const { cat } = props;
-  const [showModal, setShowModal] = useState(false);
-  const [basketItems, setBasketItems] = useState([]);
-  const itemsPrice = basketItems.reduce((a, c) => a + c.qty * c.price, 0);
-  const shippingPrice = itemsPrice > 2000 ? 0 : 20;
-  const totalPrice = itemsPrice + shippingPrice;
+const Basket = ({ onClose, basketItems, setBasketItems }) => {
+  const [totalPrice, setTotalPrice] = useState(
+    basketItems.reduce(
+      (acc, item) => acc + parseFloat(item.price.replace(/[^0-9.-]+/g, '')),
+      0
+    )
+  );
+  const modalRef = useRef();
 
-  const onAdd = (cat) => {
-    const exist = basketItems.find((x) => x.id === cat.id);
-    if (exist) {
-      setBasketItems(
-        basketItems.map((x) =>
-          x.id === cat.id ? { ...exist, qty: exist.qty + 1 } : x
-        )
-      );
-    } else {
-      setBasketItems([...basketItems, { ...cat, qty: 1 }]);
-    }
-  };
-  const onRemove = (cat) => {
-    const exist = basketItems.find((x) => x.id === cat.id);
-    if (exist.qty === 1) {
-      setBasketItems(basketItems.filter((x) => x.id !== cat.id));
-    } else {
-      setBasketItems(
-        basketItems.map((x) =>
-          x.id === cat.id ? { ...exist, qty: exist.qty - 1 } : x
-        )
-      );
-    }
+  const handleRemoveItem = (itemId) => {
+    const updatedBasket = basketItems.filter((item) => item.id !== itemId);
+    setBasketItems(updatedBasket);
+    setTotalPrice(
+      updatedBasket.reduce(
+        (acc, item) => acc + parseFloat(item.price.replace(/[^0-9.-]+/g, '')),
+        0
+      )
+    );
   };
 
+  const handleClearAll = () => {
+    setBasketItems([]);
+    setTotalPrice(0);
+  };
 
 
   return (
-    <div>
-      <h2>Your Basket:</h2>
-      <div>
-        {basketItems.length === 0 && <div>basket is empty</div>}
-        {basketItems.map((cat) => (
-          <div key='{props.cat.id}'>
-            <img className="thumbnail" src={image.url} alt={`image of ${image.id} the cat`} draggable="false"></img>
-            <p>{props.cat.name}</p>
-            <button onClick={() => onRemove(item)} className="remove">
-              -
-            </button>{' '}
-            <button onClick={() => onAdd(item)} className="add">
-              +
-            </button>
+    <div className="basket" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <img className='cart-logo' src="../images/catcart2white.png" alt="cat with cart" />
+        
+        <ul>
+         
+        {basketItems.map((item) => (
+  <li className='basketItems' key={item.id}>
+    <img className="thumbnail" src={`${item.url}`} alt={`cat`} draggable="false"></img> - {item.name} - {item.price} 
+    <button className="basketButtons" onClick={() => handleRemoveItem(item.id)}>Remove</button>
+  </li>
+  
+))}
+        </ul>
+        <h1>Total price: £{totalPrice}</h1>
+        <button className="basketButtons" onClick={() => alert('Forwarding to Checkout!')}>
+          Checkout
+        </button>
+        <button className="basketButtons" onClick={handleClearAll}>
+          Clear All
+        </button>
+        <button className="basketButtons" onClick={onClose}>
+          Close
+        </button>
 
-
-            <div>
-              {item.qty} x ${item.price.toFixed(2)}
-            </div>
-          </div>
-        ))}
-
-        {basketItems.length !== 0 && (
-          <div>
-
-
-            <p>Items Price</p>
-            <p>${itemsPrice.toFixed(2)}</p>
-
-            <p>Shipping Price</p>
-            <p> ${shippingPrice.toFixed(2)}</p>
-
-            <p>Total Price</p>
-            <p>${totalPrice.toFixed(2)}</p>
-
-
-
-            <button onClick={() => alert('Implement Checkout!')}>
-              Checkout
-            </button>
-          </div>
-
-        )}
-
-
-        {showModal && <BasketModal basketItems={basketItems} setShowModal={setShowModal} />}
       </div>
     </div>
   );
-}
+};
 
 export default Basket;
