@@ -53,6 +53,10 @@ const App = () => {
     console.log(basketItems);
   };
 
+  const handleRemoveFromBasket = (itemId) => {
+    setBasketItems(basketItems.filter(item => item.id !== itemId));
+  }
+
   const handleViewBasket = () => {
     setShowBasket(true);
     console.log('basket');
@@ -67,12 +71,12 @@ const App = () => {
   // rendered images
   return (
     <div className="container">
-      <Navbar />
+      <Navbar showBasket={showBasket} handleViewBasket={handleViewBasket}/>
       {showAdded && (
-        <BasketModal onClose={() => setShowAdded(false)} basketItems={basketItems} />
+        <BasketModal onClose={() => setShowAdded(false)} basketItems={basketItems} showBasket={showBasket} handleViewBasket={handleViewBasket} handleCloseModal={handleCloseModal} />
       )}
       {showBasket && (
-        <Basket onClose={() => setShowBasket(false)} basketItems={basketItems} />
+        <Basket onClose={() => setShowBasket(false)} basketItems={basketItems} setBasketItems={setBasketItems} onRemove={handleRemoveFromBasket} />
       )}
       <div className="image-grid">
         {catData.map((cat) => {
@@ -81,18 +85,13 @@ const App = () => {
               <img src={cat.url} alt={`Cat ${cat.id}`} />
               {cat.breed ? (
                 <div className="overlay">
-                  <p>{cat.breed}</p>
-                  <p>{cat.description.toUpperCase()}</p>
-                  <p>{cat.price}</p>
-                </div>
-              ) : null}
-              <button onClick={() => handleAddToBasket(cat)}>
-                Add to Basket
-              </button>
-              <button onClick={() => handleViewBasket()}>
-                View Basket
-              </button>
-            </div>
+                <p>{cat.breed}</p>
+                <p>{cat.description.toUpperCase()}</p>
+                <p>{cat.price}</p>
+                <button className="addBasketButton" onClick={() => handleAddToBasket(cat)}>Add to Basket</button>
+                
+              </div>) : null}
+          </div>
           );
         })}
       </div>

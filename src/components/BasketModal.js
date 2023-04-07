@@ -11,7 +11,7 @@ const BasketModal = (props) => {
 
   return (
     <div ref={modalRef}className="add-modal">
-      <img className='cartlogo' src="./catcartlight.png" alt="cat with cart" />
+      <img className='cart-logo' src="../images/catcartlight.png" alt="cat with cart" />
       <h1>Added to Basket</h1>
       
       {props.basketItems.map((item, index) => {
@@ -26,9 +26,9 @@ const BasketModal = (props) => {
         )
       })}
 
-      <button onClick={closeHandler}>Close</button>
+      <button className="closeAddedButton" onClick={closeHandler}>Close</button>
 
-      <h1>Total Basket</h1>
+     
       <p></p>
       <p></p>
     </div>
