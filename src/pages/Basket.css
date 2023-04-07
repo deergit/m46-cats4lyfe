@@ -24,7 +24,7 @@
 }
 
 .basket  img {
-  width: 60px;
+  width: 90px;
   height: auto;
   border-radius: 5px;
 }
@@ -32,8 +32,7 @@
 .cart-logo {
   position: absolute;
   top: 10px;
-  right: 10px;
-  height: 80px;
+  right: 10px; 
 }
 
 .basketButtons {
@@ -48,4 +47,11 @@
 .basketButtons:hover {
   filter: brightness(1.2);
   scale: 1.1;
+}
+
+.basketItems {
+    margin-top: 100px;
+    font-size: 12px;
+   
+    list-style: none;
 }

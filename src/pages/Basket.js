@@ -31,13 +31,16 @@ const Basket = ({ onClose, basketItems, setBasketItems }) => {
   return (
     <div className="basket" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <h2>Basket</h2>
+      <img className='cart-logo' src="../images/catcart2white.png" alt="cat with cart" />
+        
         <ul>
+         
         {basketItems.map((item) => (
-  <li key={item.id}>
+  <li className='basketItems' key={item.id}>
     <img className="thumbnail" src={`${item.url}`} alt={`cat`} draggable="false"></img> - {item.name} - {item.price} 
     <button className="basketButtons" onClick={() => handleRemoveItem(item.id)}>Remove</button>
   </li>
+  
 ))}
         </ul>
         <h1>Total price: £{totalPrice}</h1>
