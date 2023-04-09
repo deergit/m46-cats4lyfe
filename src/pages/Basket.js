@@ -31,7 +31,7 @@ const Basket = ({ onClose, basketItems, setBasketItems }) => {
   return (
     <div className="basket" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-      <img className='cart-logo' src="../images/catcart2white.png" alt="cat with cart" />
+      <img className='cart-logo' src="./images/catcart2white.png" alt="cat with cart" />
         
         <ul>
          

@@ -12,7 +12,7 @@ const BasketModal = (props) => {
     <div ref={modalRef} className="add-modal">
       <img
         className="cart-logo"
-        src="../images/catcartlight.png"
+        src="./images/catcartlight.png"
         alt="cat with cart"
       />
       <h1>Added to Basket</h1>
